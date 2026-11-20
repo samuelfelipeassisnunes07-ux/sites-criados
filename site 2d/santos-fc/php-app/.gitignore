@@ -1,0 +1,6 @@
+/var/*
+!/var/.gitkeep
+/runtime/
+/tests/.tmp/
+/.env
+*.log

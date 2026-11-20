@@ -1,0 +1,20 @@
+# Segurança da pasta de uploads: nunca execute scripts enviados por usuários.
+Options -Indexes
+<FilesMatch "\.(php|phtml|php3|php4|php5|php7|php8|phar|pl|py|cgi|sh|exe|bat|cmd|js|html|htm|svg)$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag engine off
+</IfModule>
+<IfModule mod_php8.c>
+    php_flag engine off
+</IfModule>
+
+# Garante o tipo correto das imagens servidas
+AddType image/jpeg .jpg .jpeg
+AddType image/png .png
+AddType image/webp .webp

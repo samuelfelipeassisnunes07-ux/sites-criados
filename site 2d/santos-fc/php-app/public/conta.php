@@ -1,0 +1,20 @@
+<?php
+require __DIR__.'/../src/bootstrap.php';$user=require_user();$error=null;
+if($_SERVER['REQUEST_METHOD']==='POST'){
+    try{
+        post_guard();$action=input('action');
+        if($action==='profile') { $name=clean_name(input('name'));query('UPDATE users SET name=? WHERE id=?',[$name,$user['id']]);audit((int)$user['id'],'perfil',(int)$user['id']);redirect('/conta.php?saved=profile'); }
+        if($action==='password') {
+            verify_current_password((int)$user['id'],input('current_password'));validate_password(input('password'),input('confirmation'));
+            $hash=password_hash(input('password'),PASSWORD_DEFAULT);
+            transaction(function()use($hash,$user){query('UPDATE users SET password_hash=? WHERE id=?',[$hash,$user['id']]);query('DELETE FROM sessions WHERE user_id=?',[$user['id']]);audit((int)$user['id'],'senha_alterada',(int)$user['id']);});
+            issue_session((int)$user['id'],false);redirect('/conta.php?saved=password');
+        }
+        if($action==='sessions') { verify_current_password((int)$user['id'],input('current_password_sessions')); query('DELETE FROM sessions WHERE user_id=?',[$user['id']]);audit((int)$user['id'],'sessoes_encerradas',(int)$user['id']);clear_auth_cookie();redirect('/login.php'); }
+        throw new FormError('Ação inválida.');
+    }catch(FormError $ex){$error=$ex->getMessage();}
+}
+$count=(int)query('SELECT COUNT(*) FROM sessions WHERE user_id=? AND expires_at>?',[$user['id'],time()])->fetchColumn();
+require __DIR__.'/../src/layout.php';page_start('Minha conta',$user);
+?>
+<main class="account-main" id="conteudo"><div class="account-heading"><div><span class="eyebrow">SEU ESPAÇO ALVINEGRO</span><h1>OLÁ, <em><?= e($user['name']) ?>.</em></h1><p>Bom ter você por aqui.</p></div><span class="role-badge"><?= $user['role']==='admin'?'ADMINISTRADOR':'TORCEDOR' ?></span></div><?php error_box($error); ?><?php if(isset($_GET['welcome'])): ?><div class="form-message success" role="status">Sua conta foi criada. Bem-vindo à Alma Alvinegra!</div><?php endif; ?><?php if(in_array($_GET['saved']??'',['profile','password'],true)): ?><div class="form-message success" role="status"><?= $_GET['saved']==='password'?'Senha alterada. As sessões anteriores foram encerradas.':'Seu nome foi atualizado.' ?></div><?php endif; ?><div class="account-grid"><section class="panel"><span class="eyebrow">01 / SEUS DADOS</span><h2>SEU PERFIL.</h2><form method="post"><?= csrf_field() ?><input type="hidden" name="action" value="profile"><label for="name">Nome</label><input id="name" name="name" required minlength="2" maxlength="80" autocomplete="name" value="<?= e($user['name']) ?>"><label for="account-email">E-mail da conta</label><input id="account-email" type="email" value="<?= e($user['email']) ?>" readonly><p class="field-hint">Membro desde <?= e(date('d/m/Y',(int)$user['created_at'])) ?>.</p><button class="button gold submit">Salvar nome <span>↗</span></button></form></section><section class="panel"><span class="eyebrow">02 / SEGURANÇA</span><h2>ALTERAR SENHA.</h2><form method="post"><?= csrf_field() ?><input type="hidden" name="action" value="password"><?php password_field('current_password','Senha atual','current-password'); ?><?php password_field('password','Nova senha'); ?><small class="field-hint">Pelo menos 12 caracteres. As outras sessões serão encerradas.</small><?php password_field('confirmation','Confirmar nova senha'); ?><button class="button gold submit">Atualizar senha <span>↗</span></button></form></section><section class="panel sessions-panel"><div><span class="eyebrow">03 / DISPOSITIVOS</span><h2>CONTROLE SEU ACESSO.</h2><p><?= $count ?> sessão<?= $count===1?'':'ões' ?> ativa<?= $count===1?'':'s' ?>. Encerre todos os acessos, inclusive este.</p></div><form method="post"><?= csrf_field() ?><input type="hidden" name="action" value="sessions"><?php password_field('current_password_sessions','Confirme sua senha','current-password'); ?><button class="button outline submit" data-confirm="Você sairá de todos os dispositivos, inclusive deste. Continuar?">Sair de todos os dispositivos ↗</button></form></section></div></main><?php page_end(); ?>

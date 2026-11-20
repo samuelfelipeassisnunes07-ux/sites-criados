@@ -1,0 +1,101 @@
+[
+  {
+    "file": "stadium.webp",
+    "url": "https://media.santosfc.com.br/wp-content/uploads/2022/08/Foto-tu.drone_.jpeg",
+    "page": "https://www.santosfc.com.br/vila-belmiro/",
+    "alt": "Vista aérea da Vila Belmiro",
+    "credit": "@tu.drone",
+    "size": [
+      1280,
+      719
+    ]
+  },
+  {
+    "file": "stadium-city.webp",
+    "url": "https://media.santosfc.com.br/wp-content/uploads/2022/08/Foto-tu.drone-2.jpeg",
+    "page": "https://www.santosfc.com.br/vila-belmiro/",
+    "alt": "Vista aérea da Vila Belmiro e da cidade de Santos durante o dia",
+    "credit": "@tu.drone",
+    "size": [
+      1024,
+      576
+    ]
+  },
+  {
+    "file": "vila.webp",
+    "url": "https://media.santosfc.com.br/wp-content/uploads/2022/08/Foto-Fabio-Maradei-1.jpeg",
+    "page": "https://www.santosfc.com.br/vila-belmiro/",
+    "alt": "Fachada histórica do Estádio Urbano Caldeira, a Vila Belmiro",
+    "credit": "Fábio Maradei / Santos FC",
+    "size": [
+      1280,
+      960
+    ]
+  },
+  {
+    "file": "pele.webp",
+    "url": "https://media.santosfc.com.br/wp-content/uploads/2023/07/Inteiro-9.jpg",
+    "page": "https://www.santosfc.com.br/pele-inicia-sua-historia-com-o-santos/",
+    "alt": "Pelé jovem com o uniforme do Santos FC",
+    "credit": "Acervo Santos FC",
+    "size": [
+      572,
+      900
+    ]
+  },
+  {
+    "file": "neymar.webp",
+    "url": "https://media.santosfc.com.br/wp-content/uploads/2025/03/54362031773_f7b74e3fab_o-scaled.jpg",
+    "page": "https://www.santosfc.com.br/neymar-comemora-convocacao-para-a-selecao-brasileira-jogando-no-santos-fc/",
+    "alt": "Neymar com o uniforme branco do Santos FC",
+    "credit": "Raul Baretta / Santos FC",
+    "size": [
+      1750,
+      1400
+    ]
+  },
+  {
+    "file": "fans.webp",
+    "url": "https://media.santosfc.com.br/wp-content/uploads/2022/10/Pele-82-Anos-Bandeiroes.png",
+    "page": "https://www.santosfc.com.br/na-vila-belmiro-santos-fc-faz-homenagens-pelos-82-anos-de-pele/",
+    "alt": "Torcida santista exibe bandeirões em homenagem a Pelé",
+    "credit": "Santos FC",
+    "size": [
+      998,
+      446
+    ]
+  },
+  {
+    "file": "fireworks.webp",
+    "url": "https://media.santosfc.com.br/wp-content/uploads/2022/10/Pele-82-Anos-Fogos.png",
+    "page": "https://www.santosfc.com.br/na-vila-belmiro-santos-fc-faz-homenagens-pelos-82-anos-de-pele/",
+    "alt": "Fogos de artifício na Vila Belmiro em homenagem a Pelé",
+    "credit": "Santos FC",
+    "size": [
+      1213,
+      650
+    ]
+  },
+  {
+    "file": "memorial.webp",
+    "url": "https://media.santosfc.com.br/wp-content/uploads/2022/08/Memorial-das-Conquistas-2.jpeg",
+    "page": "https://www.santosfc.com.br/memorial-das-conquistas/",
+    "alt": "Troféus no Memorial das Conquistas do Santos FC",
+    "credit": "Santos FC",
+    "size": [
+      1280,
+      852
+    ]
+  },
+  {
+    "file": "match.webp",
+    "url": "https://media.santosfc.com.br/wp-content/uploads/2026/11/55640781533_7f7f68f131_k-1024x683.jpg",
+    "page": "https://www.santosfc.com.br/",
+    "alt": "Jogadores das categorias de base do Santos FC comemoram em campo",
+    "credit": "Santos FC",
+    "size": [
+      1024,
+      683
+    ]
+  }
+]
