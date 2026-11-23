@@ -1,5 +1,7 @@
 # Hogwarts — Atlas Encantado
 
+![Página inicial do Hogwarts Atlas](../../docs/images/hogwarts.jpg)
+
 Experiência de fã em português com sete ambientes 3D: exterior do castelo, Grande Salão, Grifinória, Sonserina, Corvinal, Lufa-Lufa e biblioteca.
 
 ## Executar

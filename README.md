@@ -8,6 +8,22 @@ Projetos de sites de Samuel Felipe Assis Nunes, desenvolvidos em trabalhos e est
 | Hogwarts Atlas | [site herry potter/hogwarts-atlas](site%20herry%20potter/hogwarts-atlas/) | Site temático com experiência 3D |
 | Simês de Fútbol | [sitesimesdefutbol](sitesimesdefutbol/) | Projeto de loja em PHP com catálogo, carrinho e administração |
 
+## Fotos dos projetos
+
+### Santos FC — Alma Alvinegra
+
+![Página inicial do Santos FC](docs/images/santos.jpg)
+
+### Hogwarts — Atlas Encantado
+
+![Página inicial do Hogwarts Atlas](docs/images/hogwarts.jpg)
+
+### Simês de Fútbol
+
+![Loja Simês de Fútbol com produtos de demonstração](docs/images/simes.jpg)
+
+Capturas das interfaces executadas em ambiente de demonstração. A loja usa os dados de exemplo do próprio projeto.
+
 ## Como começar
 
 - **Santos FC:** consulte o [README](site%202d/santos-fc/README.md) e as [instruções da versão PHP](site%202d/santos-fc/php-app/README.md). Os arquivos estáticos estão em `dist/`. Para executar a versão PHP em outro computador, instale o PHP e as extensões indicadas no README.

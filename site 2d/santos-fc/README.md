@@ -1,5 +1,7 @@
 # Santos FC — Alma Alvinegra
 
+![Página inicial do Santos FC](../../docs/images/santos.jpg)
+
 Site estático em português, com fotos, efeitos 2D e profundidade 3D em CSS, galeria filtrável e ampliável, linha do tempo e navegação acessível. Sem dependências de build.
 
 ## Abrir localmente
