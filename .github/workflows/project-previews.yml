@@ -15,10 +15,9 @@ jobs:
           node-version: '22'
       - name: Preparar ambiente de demonstração
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y php-cli php-mysql php-mbstring php-curl mysql-server
+          php -v
           sudo systemctl start mysql
-          sudo mysql -e "CREATE USER 'preview'@'127.0.0.1' IDENTIFIED BY 'preview'; GRANT ALL ON sitesimesdefutbol.* TO 'preview'@'127.0.0.1';"
+          mysql -uroot -proot -e "CREATE USER 'preview'@'127.0.0.1' IDENTIFIED BY 'preview'; GRANT ALL ON sitesimesdefutbol.* TO 'preview'@'127.0.0.1';"
           cd sitesimesdefutbol
           cp .env.example .env
           sed -i 's/^DB_USERNAME=.*/DB_USERNAME=preview/;s/^DB_PASSWORD=.*/DB_PASSWORD=preview/;s|^APP_URL=.*|APP_URL=http://127.0.0.1:8080|' .env
@@ -27,15 +26,15 @@ jobs:
           cd ..
           git clone --depth 1 https://github.com/samuelfelipeassisnunes07-ux/JARVIS_APP.git /tmp/jarvis
           git clone --depth 1 https://github.com/samuelfelipeassisnunes07-ux/aula-container-docker.git /tmp/docker-site
-          sudo mysql < /tmp/docker-site/mysql/init.sql
-          sudo mysql -e "CREATE USER 'root'@'127.0.0.1' IDENTIFIED BY 'root'; GRANT ALL ON aeroporto.* TO 'root'@'127.0.0.1';" || true
+          mysql -uroot -proot < /tmp/docker-site/mysql/init.sql
+          mysql -uroot -proot -e "CREATE USER 'root'@'127.0.0.1' IDENTIFIED BY 'root'; GRANT ALL ON aeroporto.* TO 'root'@'127.0.0.1';" || true
           echo '127.0.0.1 db' | sudo tee -a /etc/hosts
           php -d display_errors=0 -S 127.0.0.1:8081 -t /tmp/docker-site/www >/tmp/catalog.log 2>&1 &
           python3 -m http.server 4173 --bind 127.0.0.1 >/tmp/static.log 2>&1 &
           python3 -m http.server 4174 --bind 127.0.0.1 --directory /tmp/jarvis/project_Jarvis/web >/tmp/jarvis.log 2>&1 &
           npm install --prefix /tmp/capture playwright
           cd /tmp/capture
-          npx playwright install --with-deps chromium
+          npx playwright install chromium
       - name: Fotografar interfaces
         run: |
           mkdir -p previews
