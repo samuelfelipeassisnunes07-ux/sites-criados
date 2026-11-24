@@ -2,7 +2,7 @@
 
 Loja em PHP com catálogo, carrinho e administração.
 
-![Loja Simês de Fútbol](../docs/images/simes.jpg)
+![Loja Simês de Fútbol](../../docs/images/simes.jpg)
 
 Captura da página inicial com os produtos de demonstração fornecidos pelo projeto.
 
